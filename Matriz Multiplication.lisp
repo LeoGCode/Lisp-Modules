@@ -40,18 +40,18 @@
         (setq r2 (length m2))
         (setq c1 (length (car m1)))
         (setq c2 (length (car m2)))
-        (setq result (make-list r1 :initial-element (make-list c2 :initial-element 0)))
+        (setq result (make-list r1 :initial-element (make-list c2 :initial-element 0))) ; create de new matrix
         (setq i 0)
-        (dotimes (i r1)
-            (dotimes (j c2)
+        (dotimes (i r1) ; traverse through the rows of the first matrix
+            (dotimes (j c2) ; traverse through the colums of the first matrix
                 (setq sum 0)
-                (dotimes (k r2)
+                (dotimes (k r2) ; traverse through the row i of the first matrix and through the colum j of the second matrix
                     (setq sum (+ sum (* (nth k (nth i m1)) (nth j (nth k m2)))))
                 )
-                (setf (nth j (nth i result)) sum)
+                (setf (nth j (nth i result)) sum) ; store the result in the new matrix
             )
         )   
-    result)
+    result) ; return the new matrix
 )
 
 (setq mr (matrix-multiply matrix1 matrix2))
